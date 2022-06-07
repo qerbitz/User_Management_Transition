@@ -95,7 +95,7 @@
         </plugins>
     </build>
 
-    <distributionManagement>
+    <!--<distributionManagement>
         <repository>
             <uniqueVersion>false</uniqueVersion>
             <id>corp1</id>
@@ -103,6 +103,6 @@
             <url>file:///home/myfolder/.m2</url>
             <layout>default</layout>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 
 </project>
