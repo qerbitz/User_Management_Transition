@@ -1,0 +1,115 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background-color: darkslategrey;
+        background-size: cover;
+        background-position: center;
+        font-family: sans-serif;
+    }
+
+    .loginbox{
+        width: 320px;
+        height: 420px;
+        background: #000;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+        text-align:center;
+    }
+
+    .avatar{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 50px);
+    }
+
+    h1{
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .loginbox p{
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+    }
+
+    .loginbox input{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .loginbox input[type="text"], input[type="password"]
+    {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+    }
+    .loginbox input[type="submit"]
+    {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: orange;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+    .loginbox input[type="submit"]:hover
+    {
+        cursor: pointer;
+        background: #ffc107;
+        color: #000;
+    }
+    .loginbox a{
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+    }
+
+    .loginbox a:hover
+    {
+        color: #ffc107;
+    }
+
+
+</style>
+<head>
+    <title>App</title>
+
+<body>
+<div class="loginbox">
+    <img src="https://raw.githubusercontent.com/qerbitz/spring_angular_backend/919e9acbb00e81c3976b854d105f1f8877842de5/src/main/resources/static/images/avatar.png" class="avatar">
+    <h1>Registration <br/> was successful!</h1>
+    <form action="/login" method="post">
+
+        Thank you for registering - your account has been created!
+        <br/>
+        You can log in.
+
+        <br/>
+        <a href="/login"> <br/> <br/> <br/>  <input type="submit" value="Log in"></a>
+
+    </form>
+
+</div>
+
+</body>
+</head>
+</html>
