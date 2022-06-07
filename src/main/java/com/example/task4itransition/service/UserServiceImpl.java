@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         validateNewUsernameAndEmail(user.getUsername(), user.getEmail());
         user.setRegistration_time(new Date());
         user.setPassword(encodePassword(user.getPassword()));
-        user.setStatus(false);
+        user.setStatus(true);
         userRepository.save(user);
         return user;
     }
