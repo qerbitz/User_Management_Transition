@@ -96,7 +96,7 @@
     <img src="https://raw.githubusercontent.com/qerbitz/spring_angular_backend/919e9acbb00e81c3976b854d105f1f8877842de5/src/main/resources/static/images/avatar.png" class="avatar">
     <h1>Login</h1>
     <form class="form-signin" method="post" th:action="@{/login}">
-        <p th:if="${param.error}" class="error">Username or password is incorrect</p>
+        <p th:if="${param.error}" class="error" style="color: red">Bad credentials or your account is locked</p>
         <p th:if="${param.logout}" class="error">You have been logged out</p>
         <input type="text" name="username" placeholder="Login" onfocus="this.placeholder=''" onblur="this.placeholder='Login'">
 
