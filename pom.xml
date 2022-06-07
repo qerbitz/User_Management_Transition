@@ -88,21 +88,7 @@
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>3.0.4</version>
-                <configuration>
-                    <appName>user-task4-itransition</appName>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <!--<distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>corp1</id>
-            <name>Corporate Repository</name>
-            <url>file:///home/myfolder/.m2</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>-->
-
 </project>
