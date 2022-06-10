@@ -47,8 +47,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User register(User user) throws UserNotFoundException, UsernameExistException, EmailExistException {
-        validateNewUsernameAndEmail(user.getUsername(), user.getEmail());
+    public User register(User user){
         user.setRegistration_time(new Date());
         user.setPassword(encodePassword(user.getPassword()));
         user.setStatus(true);
@@ -63,7 +62,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email);
+        return userRepository.findUserByUsername(email);
     }
 
     @Override
@@ -98,8 +97,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public boolean checkUniqueness(String username) {
+    public boolean checkUniquenessUsername(String username) {
         Optional<User> xdd = Optional.ofNullable(findUserByUsername(username));
+        if (xdd.isPresent()) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean checkUniquenessEmail(String email) {
+        Optional<User> xdd = Optional.ofNullable(findUserByEmail(email));
         if (xdd.isPresent()) {
             return true;
         }
@@ -111,19 +122,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private String encodePassword(String password) {
         return bCryptPasswordEncoder.encode(password);
-    }
-
-    private User validateNewUsernameAndEmail(String newUsername, String newEmail) throws EmailExistException, UsernameExistException {
-        User userByNewUsername = findUserByUsername(newUsername);
-        User userByNewEmail = findUserByEmail(newEmail);
-
-        if(userByNewUsername != null) {
-            throw new UsernameExistException("USERNAME_ALREADY_EXISTS");
-        }
-        if(userByNewEmail != null) {
-            throw new EmailExistException("EMAIL_ALREADY_EXISTS");
-        }
-        return null;
     }
 
 }

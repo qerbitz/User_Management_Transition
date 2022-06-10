@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserService {
 
-    User register(User user) throws UserNotFoundException, UsernameExistException, EmailExistException;
+    User register(User user);
 
     User findUserByUsername(String username);
 
@@ -22,7 +22,9 @@ public interface UserService {
 
     void deleteUser(List<Long> users);
 
-    boolean checkUniqueness(String username);
+    boolean checkUniquenessUsername(String username);
+
+    boolean checkUniquenessEmail(String email);
 
     List<User> getAllUsers();
 

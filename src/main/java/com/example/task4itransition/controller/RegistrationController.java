@@ -35,16 +35,16 @@ public class RegistrationController {
     }
 
     @PostMapping("/processRegistration")
-    public String processRegistration(@Valid @ModelAttribute("user") User user, Model model, BindingResult bindingResult) throws UserNotFoundException, EmailExistException, UsernameExistException {
+    public String processRegistration(@Valid @ModelAttribute("user") User user, Model model, BindingResult bindingResult) {
 
-        if(userService.checkUniqueness(user.getUsername())) {
+        if(userService.checkUniquenessUsername(user.getUsername())) {
             bindingResult.addError(new FieldError("username", "username", "Username already exist"));
         }
-        if(!(user.getPassword().length()<1)){
-            bindingResult.addError(new FieldError("username", "password", "Password too short"));
+        if(!(user.getPassword().length()<=1)){
+            bindingResult.addError(new FieldError("password", "password", "Password too short"));
         }
-        if(!isValidEmail(user.getEmail())){
-            bindingResult.addError(new FieldError("username", "e_mail", "E-mail is not valid or already exist"));
+        if(!isValidEmail(user.getEmail()) || userService.checkUniquenessEmail(user.getEmail())){
+            bindingResult.addError(new FieldError("email", "email", "E-mail is not valid or already exist"));
         }
         else{
             userService.register(user);
